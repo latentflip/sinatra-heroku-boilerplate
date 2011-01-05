@@ -15,6 +15,10 @@ DataMapper.auto_upgrade!
 
 # Routes
 
+get "/css/:sheet.css" do |sheet|
+  sass :"css/#{sheet}"
+end
+
 get "/" do
-	haml :index
+  haml :index
 end
