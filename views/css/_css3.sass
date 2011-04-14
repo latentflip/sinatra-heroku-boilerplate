@@ -1,0 +1,109 @@
+//<all> or <top-right, top-left, bottom-right, bottom-left>
+=border-radius($radius)
+  border-radius: #{$radius}
+  -moz-border-radius: #{$radius}
+  -webkit-border-radius: #{$radius}
+
+//<left top spread color>
+=box-shadow($args)
+  -moz-box-shadow: #{$args}
+  -webkit-box-shadow: #{$args}
+  box-shadow: #{$args}
+
+//<clockwise angle>
+=rotate($args)
+  -moz-transform: rotate(#{$args})
+  -o-transform: rotate(#{$args})
+  -webkit-transform: rotate(#{$args})
+
+//<left top spread color>
+=text-shadow($args)
+  -moz-text-shadow: #{$args}
+  -webkit-text-shadow: #{$args}
+  text-shadow: #{$args}
+
+=box-gradient($from, $to)
+  background-image: -moz-linear-gradient(top, #{$from}, #{$to})
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #{$from}), color-stop(1, #{$to}))
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from}', EndColorStr='#{$to}')
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from}', EndColorStr='#{$to}')"
+
+=arrow
+  width: 0
+  height: 0
+  font-size: 0px
+  line-height: 0px
+
+=bubble-up($size, $color, $left_pos, $right_pos)
+  .arrow
+    +arrow
+    border-left: $size solid transparent
+    border-right: $size solid transparent
+    border-bottom: $size solid $color
+    margin: 0 $right_pos 0 $left_pos
+  .inner
+    padding-top: $size
+    background-color: $color
+
+=circle($diameter, $padding)
+  +border-radius($diameter+$padding)
+  width: $diameter
+  height: $diameter
+  padding: $padding
+  line-height: $diameter
+
+=inline-ie7
+  *display: inline
+  zoom: 1
+  _height: 20px
+
+=opacity($amount)
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$amount*100})"
+
+  /* IE 5-7 */
+  filter: alpha(opacity=#{$amount*100})
+
+  /* Netscape */
+  -moz-opacity: $amount
+
+  /* Safari 1.x */
+  -khtml-opacity: $amount
+
+  /* Good browsers */
+    opacity: $amount
+
+=super-button
+  display: block
+  margin: 0
+  overflow: hidden
+  text-decoration: none
+  vertical-align: middle
+  text-align: center
+  color: #fff !important
+  font: bold 18px 'Helvetica', 'Arial', sans-serif
+  line-height: 50px
+  background-repeat: no-repeat
+  background-position: top left
+  background-color: transparent
+  text-shadow: 0px -1px 1px rgba(0,0,0,.25)
+  text-decoration: none
+  width: 230px
+  height: 50px
+  +box-gradient(#F5C87C, #F2AF49)
+  +box-gradient(#F2B36D, #ED782A)
+  +border-radius(50px)
+  +box-shadow(0px 1px 1px rgba(0,0,0,.25))
+  border: 1px #F1A43A solid
+
+  &:hover
+    cursor: pointer
+    background-position: center left
+    +box-gradient(#F2AF49, #F5C87C)
+    +box-gradient(#ED782A, #F2B36D)
+
+  &:active
+    position: relative
+    +box-shadow(none)
+    top: 1px
+
